@@ -5,8 +5,8 @@ import  Col  from 'react-bootstrap/Col';
 function Store(){
 
     return(
-        <div className='Store'>
-        <Container className='Store' >
+        <div id='Store'>
+        <Container>
             <Row>
                 <Col>1 of 6</Col>
                 <Col>2 of 6</Col>

@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <h5>CodeClicker!</h5>
       </header>
-       <Store/>
+      <Store/>
     </div>
     );
 
