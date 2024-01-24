@@ -5,8 +5,7 @@ import  Col  from 'react-bootstrap/Col';
 function Store(){
 
     return(
-        <div id='Store'>
-        <Container>
+        <Container id='Store'>
             <Row>
                 <Col>1 of 6</Col>
                 <Col>2 of 6</Col>
@@ -16,7 +15,6 @@ function Store(){
                 <Col>6 of 6</Col>
             </Row>
         </Container>
-        </div>
         
     );
 }
