@@ -14,6 +14,7 @@ function Store(){
                 <Col>5 of 6</Col>
                 <Col>6 of 6</Col>
             </Row>
+            
         </Container>
         
     );
