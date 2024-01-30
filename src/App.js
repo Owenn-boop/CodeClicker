@@ -4,6 +4,7 @@ import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Store from './Store';
+import CodeButton from './CodeButton';
 
 
 
@@ -19,16 +20,16 @@ function App() {
         <Row>
           <Col>
             {/* Content for the first column */}
-            <p>Column 1 Content</p>
+            <p>Column 1 Content</p> 
           </Col>
           <Col>
             {/* Content for the second column */}
             <p>Column 2 Content</p>
+            <CodeButton/>
           </Col>
           <Col>
             {/* Content for the third column */}
-        
-            <Store/>
+        <Store/>
           </Col>
         </Row>
       </Container>
