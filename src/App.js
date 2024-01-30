@@ -3,6 +3,9 @@ import  Container  from 'react-bootstrap/Container';
 import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Store from './Store';
+
+
 
 function App() {
   return (
@@ -10,6 +13,7 @@ function App() {
       <header className="App-header">
         <h5>CodeClicker!</h5>
       </header>
+      
 
       <Container>
         <Row>
@@ -23,12 +27,15 @@ function App() {
           </Col>
           <Col>
             {/* Content for the third column */}
-            <p>Column 3 Content</p>
+        
+            <Store/>
           </Col>
         </Row>
       </Container>
     </div>
-  );
+    );
+
+  
 }
 
 export default App;
