@@ -1,0 +1,12 @@
+.Tools {
+background-color: aqua;
+}
+.StoreCol{
+    background-color: aqua;
+}
+.Store-Item > img{
+width: 64px;
+height: 64px;
+}
+
+

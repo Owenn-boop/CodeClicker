@@ -4,6 +4,7 @@ import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Store from './Store';
+import './StoreItem.css';
 import CodeButton from './CodeButton';
 
 
@@ -27,7 +28,7 @@ function App() {
             <p>Column 2 Content</p>
             <CodeButton/>
           </Col>
-          <Col>
+          <Col className ='StoreCol' >
             {/* Content for the third column */}
         <Store/>
           </Col>
