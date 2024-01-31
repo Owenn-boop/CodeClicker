@@ -1,13 +1,14 @@
-import  Container  from 'react-bootstrap/Container';
 import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import './StoreItem.css';
 import Image from 'react-bootstrap/Image';
+import { getName } from './StoreItemLookup.js';
 
 
-function StoreItem({item_name}){
-    let item_image = require(`./Assets/${item_name}.png`);
+function StoreItem({item}){
+    let item_image = require(`./Assets/${item}.png`);
+    let item_name = getName(item);
 
     return(
         <Button className='Store-Item'variant="secondary">
