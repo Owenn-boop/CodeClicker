@@ -1,7 +1,8 @@
 let item_texts = {
     'monkey': 'Code Monkey',
     'mario':  'Mario',
-    'luigi':  'Luigi'
+    'luigi':  'Luigi',
+    
 }
 
 export function getName(item_name){

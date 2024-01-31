@@ -7,6 +7,7 @@ function Store(){
     return(
         <Container>
             <Row><h2 className='border-bottom'>Store</h2></Row>
+            <Row><p className='Upgrades'>Upgrades</p></Row>
             <Row><p className='Tools'>Tools</p></Row>
             <Row><StoreItem item={'monkey'}/></Row>
             <Row><StoreItem item={'mario'}/></Row>
