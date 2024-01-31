@@ -1,12 +1,21 @@
-.Tools {
-background-color: aqua;
-}
 .StoreCol{
-    background-color: aqua;
+    background-color: rgb(0, 128, 255);
 }
-.Store-Item > img{
-width: 64px;
-height: 64px;
+
+.Store-Item {
+    width: 100%;
+    margin: 2px;
+}
+
+.Store-Item > .row > .col-sm-2 > img {
+    width: 64px;
+    height: 64px;
+}
+
+.Store-Item > .row > .col-sm-8 {
+    text-align: end;
+    align-self: flex-end;
+    font-size: 40px;
 }
 
 
