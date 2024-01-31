@@ -1,15 +1,15 @@
 import  Container  from 'react-bootstrap/Container';
 import  Row  from 'react-bootstrap/Row';
-import  Col  from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import StoreItem from './StoreItem';
 
 function Store(){
 
     return(
         <Container>
-            <Row><p>Store</p></Row>
-            <Row><StoreItem/></Row>
+            <Row><h2 className='border-bottom'>Store</h2></Row>
+            <Row><p className='Tools'>Tools</p></Row>
+            <Row><StoreItem item_name={'Mario'}/></Row>
+            <Row><StoreItem item_name={'Luigi'}/></Row>
         </Container>
     );
 }

@@ -4,20 +4,25 @@ import  Col  from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import './StoreItem.css';
 import Image from 'react-bootstrap/Image';
-import Mario from './Assets/Mario.jpg';
 
 
-function StoreItem(){
+function StoreItem({item_name}){
+    let item_image = require(`./Assets/${item_name}.png`);
 
     return(
-    <Container >
-            <Row><p className='Tools'>Tools</p></Row>
-            <Row><p><Button className='Store-Item'variant="secondary"><Image src={Mario}/>Item 1</Button>{''}</p></Row>
-            <Row><p><Button className='Store-Item'variant="secondary">Item 2</Button>{''}</p></Row>
-            <Row><p><Button className='Store-Item'variant="secondary">Item 3</Button>{''}</p></Row>
-            <Row><p><Button className='Store-Item'variant="secondary">Item 4</Button>{''}</p></Row>
-            <Row><p><Button className='Store-Item'variant="secondary">Item 5</Button>{''}</p></Row>
-        </Container>
+        <Button className='Store-Item'variant="secondary">
+            <Row>
+                <Col sm={2} >
+                    <Image src={item_image}/>
+                </Col>
+                <Col sm={8}>
+                    {item_name}
+                </Col>
+                <Col sm={2}>
+                    Sample Text {/* Will be used for a count of items possibly? */}
+                </Col>
+            </Row>
+        </Button>
     );
 }
 

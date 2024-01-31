@@ -30,7 +30,7 @@ function App() {
           </Col>
           <Col className ='StoreCol' >
             {/* Content for the third column */}
-        <Store/>
+            <Store/>
           </Col>
         </Row>
       </Container>
