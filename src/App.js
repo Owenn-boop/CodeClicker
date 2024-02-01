@@ -23,7 +23,7 @@ function App() {
             {/* Content for the first column */}
             <p>Column 1 Content</p> 
           </Col>
-          <Col>
+          <Col id = 'CodeButtonCol'>
             {/* Content for the second column */}
             <p>Column 2 Content</p>
             <CodeButton/>
