@@ -16,7 +16,7 @@
   height: 3vh;
 }
 
-.container > .row > .col {
+.container-fluid > .row > .col {
   height: 97vh;
 }
 

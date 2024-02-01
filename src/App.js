@@ -17,7 +17,7 @@ function App() {
       </header>
       
 
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             {/* Content for the first column */}
