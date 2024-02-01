@@ -13,4 +13,11 @@
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+  height: 3vh;
 }
+
+.container > .row > .col {
+  height: 97vh;
+}
+
+#CodeButtonCol {background-image: url(./Assets/Code_Background.png);}
