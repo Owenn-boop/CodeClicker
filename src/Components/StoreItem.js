@@ -14,12 +14,12 @@ function StoreItem({item}){
         <Button className='Store-Item'variant="secondary">
             <Row>
                 <Col sm={2} >
-                    <Image src={item_image}/>
+                    <Image src={item_image} className='Store-Image' />
                 </Col>
-                <Col sm={8}>
+                <Col sm={6} className='Store-Title'>
                     {item_name}
                 </Col>
-                <Col sm={2}>
+                <Col sm={4} className='Store-Extra'>
                     Sample Text {/* Will be used for a count of items possibly? */}
                 </Col>
             </Row>

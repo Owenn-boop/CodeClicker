@@ -5,17 +5,22 @@
 .Store-Item {
     width: 100%;
     margin: 2px;
+    word-wrap: break-word;
 }
 
-.Store-Item > .row > .col-sm-2 > img {
+.Store-Image {
     width: 64px;
     height: 64px;
+    float: left;
 }
 
-.Store-Item > .row > .col-sm-8 {
+.Store-Title {
     text-align: start;
     align-self: flex-end;
     font-size: calc(1vw + 10px);
+    padding-left: 20px;
 }
 
-
+.Store-Extra {
+    text-align: end;
+}
