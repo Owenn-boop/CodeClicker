@@ -13,7 +13,7 @@
 }
 
 .Store-Item > .row > .col-sm-8 {
-    text-align: end;
+    text-align: start;
     align-self: flex-end;
     font-size: calc(1vw + 10px);
 }
