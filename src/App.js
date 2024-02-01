@@ -1,11 +1,11 @@
-import './App.css';
+import './CSS/App.css';
 import  Container  from 'react-bootstrap/Container';
 import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Store from './Store';
-import './StoreItem.css';
-import CodeButton from './CodeButton';
+import Store from './Components/Store';
+import './CSS/StoreItem.css';
+import CodeButton from './Components/CodeButton';
 
 
 
