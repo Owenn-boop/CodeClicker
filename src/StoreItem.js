@@ -19,7 +19,7 @@ function StoreItem({item}){
                 <Col sm={8}>
                     {item_name}
                 </Col>
-                <Col sm={1}>
+                <Col sm={2}>
                     Sample Text {/* Will be used for a count of items possibly? */}
                 </Col>
             </Row>
