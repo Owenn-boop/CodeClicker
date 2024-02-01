@@ -19,7 +19,7 @@ function Store(){
             */}
 
             
-            <Row><p className= 'border-bottom'>Tools</p></Row>
+            {/*<Row><p className= 'border-bottom'>Tools</p></Row>*/}
             <Row><StoreItem item={'monkey'}/></Row>
             <Row><StoreItem item={'mario'}/></Row>
             <Row><StoreItem item={'luigi'}/></Row>
