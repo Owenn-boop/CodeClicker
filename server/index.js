@@ -63,10 +63,10 @@ async function run(){
                         }
                     }
                 )
-                console.log(`Increased ${id}'s balance by ${incrementAmt} to ${incrementAmt + search.loc}`)
+                console.log(`Increased ${id}'s balance by ${incrementAmt} to ${incrementAmt + search.loc}`);
                 res.json({message: "Success", balance: incrementAmt + search.loc});
             }else{
-                res.status(401).json({error: "Bad login"})
+                res.status(401).json({error: "Bad login"});
             }
         } catch (err) {
             res.status(500).json({
