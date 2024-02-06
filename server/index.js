@@ -4,6 +4,10 @@ require('dotenv').config()
 
 const PORT = process.env.PORT || 3001;
 const uri = process.env.MONGO_URI;
+if(uri == undefined){
+    console.log("Please MONGO_URI to your .env file.");
+    process.exit();
+}
 
 const client = new MongoClient(uri);
 
