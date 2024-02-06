@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 const { MongoClient } = require("mongodb");
 require('dotenv').config()
 
@@ -12,6 +13,10 @@ if(uri == undefined){
 const client = new MongoClient(uri);
 
 const app = express();
+let corsOptions = { 
+    origin: [ 'http://localhost:3000', 'http://localhost:3001' ] 
+}; 
+app.use(cors(corsOptions));
 
 async function run(){
     await client.connect();
@@ -54,7 +59,23 @@ async function run(){
             let search = await collection.findOne({username: id});
             let incrementAmt = 1;
     
-            if(search !== null){
+            if(search === null){
+                const userData = {
+                    username: id,
+                    loc: 0
+                }
+                await collection.insertOne(userData);
+                search = await collection.findOne({username: id});
+                if(search === null){
+                    res.status(500).json({
+                        status: "error",
+                        code: 500,
+                        data: [],
+                        message: "Internal Server Error",
+                    });
+                }
+                res.json({message: "Success, account created!", balance: incrementAmt + search.loc});
+            } else {
                 await collection.findOneAndUpdate(
                     {'username': id},
                     {
@@ -65,8 +86,6 @@ async function run(){
                 )
                 console.log(`Increased ${id}'s balance by ${incrementAmt} to ${incrementAmt + search.loc}`);
                 res.json({message: "Success", balance: incrementAmt + search.loc});
-            }else{
-                res.status(401).json({error: "Bad login"});
             }
         } catch (err) {
             res.status(500).json({

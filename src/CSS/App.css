@@ -23,3 +23,7 @@
 .CodeButtonCol {
   background-image: url(../Assets/Code_Background.png);
 }
+
+#LoginColumn > .container > .row {
+  min-height: 50%;
+}
