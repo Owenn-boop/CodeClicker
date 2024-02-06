@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Store from './Components/Store';
 import './CSS/StoreItem.css';
 import CodeButton from './Components/CodeButton';
+import LoginComponent from './Components/LoginComponent';
 
 
 
@@ -19,9 +20,9 @@ function App() {
 
       <Container fluid>
         <Row>
-          <Col>
+          <Col className='d-flex' id='LoginColumn'>
             {/* Content for the first column */}
-            <p>Column 1 Content</p> 
+            <LoginComponent />
           </Col>
           <Col className = 'CodeButtonCol d-flex align-items-center justify-content-center'>
             {/* Content for the second column */}
