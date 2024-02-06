@@ -1,10 +1,10 @@
 import Button from 'react-bootstrap/Button';
-
+import '../CSS/CodeButton.css'
 function CodeButton() {
   return (
-    <>
-      <Button variant="primary">CodeButton</Button>{' '}
-    </>
+    <div className='align-self-center'> 
+      <Button className='code-button'>CodeButton</Button>{' '}
+    </div>
   );
 }
 

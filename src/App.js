@@ -23,10 +23,9 @@ function App() {
             {/* Content for the first column */}
             <p>Column 1 Content</p> 
           </Col>
-          <Col id = 'CodeButtonCol'>
+          <Col className = 'CodeButtonCol d-flex align-items-center justify-content-center'>
             {/* Content for the second column */}
-            <p>Column 2 Content</p>
-            <CodeButton/>
+            <CodeButton />
           </Col>
           <Col className ='StoreCol' >
             {/* Content for the third column */}
