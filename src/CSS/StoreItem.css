@@ -24,3 +24,7 @@
 .Store-Extra {
     text-align: end;
 }
+
+#Store-Price {
+    height: 80%;
+}

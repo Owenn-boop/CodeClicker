@@ -3,15 +3,17 @@ import  Col  from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import '../CSS/StoreItem.css';
 import Image from 'react-bootstrap/Image';
-import { getName } from '../StoreItemLookup.js';
+import { getName, getId, getItemPrice } from '../StoreItemLookup.js';
 
 
 function StoreItem({item}){
     let item_image = require(`../Assets/${item}.png`);
     let item_name = getName(item);
+    let item_id = getId(item);
+    let item_price = getItemPrice(item);
 
     return(
-        <Button className='Store-Item'variant="secondary">
+        <Button className='Store-Item' variant="secondary" id={"item_" + item_id}>
             <Row>
                 <Col sm={2} >
                     <Image src={item_image} className='Store-Image' />
@@ -20,7 +22,9 @@ function StoreItem({item}){
                     {item_name}
                 </Col>
                 <Col sm={4} className='Store-Extra'>
-                    Sample Text {/* Will be used for a count of items possibly? */}
+                    <div>Owned: 0</div>{/* Will be used for a count of items possibly? */}
+                    <br />
+                    <div id='Store-Price'>Price: <span className='text-light bg-dark'>{item_price}</span></div>
                 </Col>
             </Row>
         </Button>
