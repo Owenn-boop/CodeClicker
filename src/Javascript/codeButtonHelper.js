@@ -1,3 +1,6 @@
+import LocBalance from "../Components/LocBalance";
+import App from "../App";
+
 export async function codeButtonClick(user) {
     console.log(`${user} clicked the button!`);
     if(user.length < 3) {
