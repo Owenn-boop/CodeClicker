@@ -21,8 +21,8 @@ function Store(){
             
             {/*<Row><p className= 'border-bottom'>Tools</p></Row>*/}
             <Row><StoreItem item={'monkey'}/></Row>
-            <Row><StoreItem item={'mario'}/></Row>
-            <Row><StoreItem item={'luigi'}/></Row>
+            <Row><StoreItem item={'hobby_programmer'}/></Row>
+            <Row><StoreItem item={'student'}/></Row>
             
         </Container>
     );
