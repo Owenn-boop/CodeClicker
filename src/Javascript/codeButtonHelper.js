@@ -1,5 +1,8 @@
 export async function codeButtonClick(user) {
     console.log(`${user} clicked the button!`);
+    if(user.length < 3) {
+        alert("Username is too short/you are not logged in!");
+    }
     try{
         let response = await fetch(`http://localhost:3001/api/v1/click?id=${user}`);
         console.log(response);

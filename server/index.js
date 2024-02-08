@@ -56,6 +56,11 @@ async function run(){
     app.get("/api/v1/click", async (req, res) => {
         try{
             let id = req.query.id;
+
+            if(id.length < 3) {
+                throw Error;
+            }
+
             let search = await collection.findOne({username: id});
             let incrementAmt = 1;
     
