@@ -1,7 +1,7 @@
 let item_texts = {
     'monkey': 'Code Monkey',
-    'mario':  'Mario',
-    'luigi':  'Luigi',
+    'hobby_programmer':  'Hobby Programmer',
+    'student':  'Student Programmer',
     
 }
 
