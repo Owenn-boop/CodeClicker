@@ -1,12 +1,13 @@
 import { Container, Row, Col } from "react-bootstrap";
+import LocBalance from "./LocBalance.js";
 
-function LoginComponent() {
+function LoginComponent({show}) {
   return (
     <Container>
         <Row>
             <Col>
                 <h3>LOC: </h3>
-                <h2 id="loc_balance">0</h2>
+                <LocBalance />
             </Col>
         </Row>
         <Row>

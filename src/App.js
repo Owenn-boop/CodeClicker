@@ -7,8 +7,7 @@ import Store from './Components/Store';
 import './CSS/StoreItem.css';
 import CodeButton from './Components/CodeButton';
 import LoginComponent from './Components/LoginComponent';
-
-
+import { useState } from 'react';
 
 function App() {
   return (
