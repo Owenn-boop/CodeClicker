@@ -6,6 +6,10 @@ TechWise Cohort 2 Project 2
 
 `git clone https://github.com/Owenn-boop/CodeClicker`
 
-`npm install`
+### Frontend:
+* `npm install`
+* `npm start`
 
-`npm start`
+### Backend:
+* Add `MONGO_URI` to .env in the ROOT directory.
+* `npm run back`
