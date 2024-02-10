@@ -18,6 +18,28 @@ let corsOptions = {
 }; 
 app.use(cors(corsOptions));
 
+function internal(res) {
+    res.status(500).json({
+        status: "error",
+        code: 500,
+        data: [],
+        message: "Internal Server Error",
+    });
+}
+function badRequest(res, msg) {
+    res.status(400).json({
+        status: "error",
+        code: 404,
+        data: [],
+        message: `Bad request: ${msg}`,
+    });
+}
+
+function getIncrementAmt(username) {
+    // finish later
+    return 1;
+}
+
 async function run(){
     await client.connect();
 
@@ -26,6 +48,7 @@ async function run(){
     const database = client.db(dbName);
     const collection = database.collection(collectionName);
 
+    /*
     const userData = {
         username: "owenn",
         loc: 4
@@ -44,6 +67,7 @@ async function run(){
     } catch (err) {
         console.error(`Something went wrong trying to insert the new documents: ${err}\n`);
     }
+    */
     
     app.listen(PORT, () => {
         console.log(`Server listening on ${PORT}`);
@@ -53,16 +77,36 @@ async function run(){
         res.json({ message: "Hello from server!" });
     });
     
+    app.get("/api/v1/getAccount", async (req, res) => {
+        let id = req.query.id;
+        if(id === undefined) {
+            badRequest(res, "Parameter missing 'id'");
+            return;
+        }
+        let search = await collection.findOne({username: id});
+        if(search === null){
+            badRequest(res, "Account does not exist.")
+            return;
+        }
+        res.json({message: "Success.", data: search});
+        return;
+    });
+
     app.get("/api/v1/click", async (req, res) => {
         try{
             let id = req.query.id;
+            if(id === undefined) {
+                badRequest(res, "Parameter missing 'id'");
+                return;
+            }
 
             if(id.length < 3) {
-                throw Error;
+                internal(res);
+                return;
             }
 
             let search = await collection.findOne({username: id});
-            let incrementAmt = 1;
+            let incrementAmt = getIncrementAmt(id);
     
             if(search === null){
                 const userData = {
@@ -72,14 +116,10 @@ async function run(){
                 await collection.insertOne(userData);
                 search = await collection.findOne({username: id});
                 if(search === null){
-                    res.status(500).json({
-                        status: "error",
-                        code: 500,
-                        data: [],
-                        message: "Internal Server Error",
-                    });
+                    internal(res);
                 }
                 res.json({message: "Success, account created!", balance: incrementAmt + search.loc});
+                return;
             } else {
                 await collection.findOneAndUpdate(
                     {'username': id},
@@ -91,14 +131,10 @@ async function run(){
                 )
                 console.log(`Increased ${id}'s balance by ${incrementAmt} to ${incrementAmt + search.loc}`);
                 res.json({message: "Success", balance: incrementAmt + search.loc});
+                return;
             }
         } catch (err) {
-            res.status(500).json({
-                status: "error",
-                code: 500,
-                data: [],
-                message: "Internal Server Error",
-            });
+            internal(res);
         }
     });
 }
