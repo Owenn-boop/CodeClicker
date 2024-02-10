@@ -11,7 +11,7 @@ function LocBalance() {
 
     return (
         <>
-            <h2 id="loc_balance" ref={target} >0</h2>
+            <h2 id="loc_balance" ref={target} >Not logged in!</h2>
             {/*
             <Overlay target={target.current} show={show} placement="bottom">
                 {({
