@@ -40,6 +40,20 @@ function getIncrementAmt(username) {
     return 1;
 }
 
+async function createDatabaseAccount(collection, username) {
+    const userData = {
+        username: username,
+        loc: 0,
+        items: []
+    }
+    await collection.insertOne(userData);
+    search = await collection.findOne({username: username});
+    if(search === null){
+        internal(res);
+    }
+    return search;
+}
+
 async function run(){
     await client.connect();
 
@@ -85,7 +99,8 @@ async function run(){
         }
         let search = await collection.findOne({username: id});
         if(search === null){
-            badRequest(res, "Account does not exist.")
+            search = await createDatabaseAccount(collection, id);
+            res.json({message: "Success, account created!", data: search});
             return;
         }
         res.json({message: "Success.", data: search});
@@ -109,16 +124,7 @@ async function run(){
             let incrementAmt = getIncrementAmt(id);
     
             if(search === null){
-                const userData = {
-                    username: id,
-                    loc: 0
-                }
-                await collection.insertOne(userData);
-                search = await collection.findOne({username: id});
-                if(search === null){
-                    internal(res);
-                }
-                res.json({message: "Success, account created!", balance: incrementAmt + search.loc});
+                badRequest(res, "Account does not exist.");
                 return;
             } else {
                 await collection.findOneAndUpdate(
