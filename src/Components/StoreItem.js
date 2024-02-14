@@ -13,7 +13,7 @@ function StoreItem({item}){
     let item_price = getItemPrice(item);
 
     return(
-        <Button className='Store-Item' variant="secondary" id={"item_" + item_id}>
+        <Button className='Store-Item' variant="secondary" id={"item_" + item_id} data-itemid={"item_" + item_id}>
             <Row>
                 <Col sm={2} >
                     <Image src={item_image} className='Store-Image' />
