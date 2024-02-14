@@ -9,9 +9,8 @@ export async function storeItemClick(item) {
         );
         console.log(response);
         if (response.ok) {
-            let resJson = await response.json();
+            updateUserInfo();
         }
-        updateUserInfo();
     } catch (err) {
         console.log(err);
     }
