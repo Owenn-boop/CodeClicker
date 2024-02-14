@@ -10,6 +10,12 @@ if(uri == undefined){
     process.exit();
 }
 
+const itemPrices = {
+    item_1: 10, // code monkey
+    item_2: 50, // hobby programmer
+    item_3: 100, // student programmer
+}
+
 const client = new MongoClient(uri);
 
 const app = express();
@@ -29,7 +35,7 @@ function internal(res) {
 function badRequest(res, msg) {
     res.status(400).json({
         status: "error",
-        code: 404,
+        code: 400,
         data: [],
         message: `Bad request: ${msg}`,
     });
@@ -44,7 +50,7 @@ async function createDatabaseAccount(collection, username) {
     const userData = {
         username: username,
         loc: 0,
-        items: []
+        items: {}
     }
     await collection.insertOne(userData);
     search = await collection.findOne({username: username});
@@ -143,6 +149,64 @@ async function run(){
             internal(res);
         }
     });
+
+    app.get("/api/v1/buyItem", async (req, res) => {
+        try{
+            let item_id = req.query.item_id;
+            let username = req.query.id;
+            if(item_id === undefined) {
+                badRequest(res, "Parameter missing 'id'");
+                return;
+            }
+            
+            if(!(item_id in itemPrices)){
+                badRequest(res, "Invalid item id.");
+                return;
+            }
+            else{
+                let search = await collection.findOne({username: username});
+                let cost = itemPrices[item_id];
+                if(search.loc > cost) {
+                    if(item_id in search.items){
+                        await collection.findOneAndUpdate(
+                            {'username': username},
+                            {
+                                $inc: {
+                                    'loc': -cost,
+                                    [`items.${item_id}`]: 1
+                                }
+                            }
+                        )
+                    }
+                    else{
+                        let items_with_new = search.items;
+                        items_with_new[`${item_id}`] = 1;
+                        await collection.findOneAndUpdate(
+                            {'username': username},
+                            {
+                                $inc: {
+                                    'loc': -cost,
+                                },
+                                $set: {
+                                    items: items_with_new
+                                }
+                            }
+                        )
+                    }
+                }
+                else{
+                    badRequest(res, "Purchase failed: Not enough LOC.");
+                    return;
+                }
+            }
+            res.json({message: "Successfully purchased an item."});
+            return;
+        } catch (err) {
+            console.log(err);
+            internal(res);
+            return;
+        }
+    })
 }
 
 
