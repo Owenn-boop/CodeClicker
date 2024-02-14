@@ -28,7 +28,9 @@ function StoreItem({ item }) {
                     {item_name}
                 </Col>
                 <Col sm={4} className="Store-Extra">
-                    <div>Owned: 0</div>
+                    <div>
+                        Owned: <span className="itemQuantity">0</span>
+                    </div>
                     {/* Will be used for a count of items possibly? */}
                     <br />
                     <div id="Store-Price">

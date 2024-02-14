@@ -39,6 +39,13 @@ export async function updateUserInfo() {
         if (response.ok) {
             let resJson = await response.json();
             loc_balance.innerHTML = resJson.data.loc;
+            console.log(resJson.data);
+            for (const item_id in resJson.data.items) {
+                let item_quantity_element = document.querySelector(
+                    `#${item_id} .itemQuantity`
+                );
+                item_quantity_element.textContent = resJson.data.items[item_id];
+            }
         }
     } catch (err) {
         console.log(err);
