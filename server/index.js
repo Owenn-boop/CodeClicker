@@ -132,10 +132,15 @@ async function run() {
         let search = await collection.findOne({ username: id });
         if (search === null) {
             search = await createDatabaseAccount(collection, id);
-            res.json({ message: "Success, account created!", data: search });
+            res.json({
+                message: "Success, account created!",
+                data: search,
+                LOCpS: 0,
+            });
             return;
         }
-        res.json({ message: "Success.", data: search });
+        let tickIncrement = await getTickIncrementAmount(collection, id);
+        res.json({ message: "Success.", data: search, LOCpS: tickIncrement });
         return;
     });
 

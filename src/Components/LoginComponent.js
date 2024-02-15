@@ -11,6 +11,7 @@ function LoginComponent({ show }) {
                 <Col>
                     <h3>LOC: </h3>
                     <LocBalance />
+                    <div id="LOCpS"></div>
                 </Col>
             </Row>
             <Row>
@@ -53,13 +54,14 @@ export async function updateUserInfo() {
             return;
         }
         let loc_balance = document.querySelector("#loc_balance");
+        let LOCpS = document.querySelector("#LOCpS");
         let response = await fetch(
             `http://localhost:3001/api/v1/getAccount?id=${username}`
         );
         if (response.ok) {
             let resJson = await response.json();
             loc_balance.innerHTML = Math.round(resJson.data.loc * 10) / 10;
-            console.log(resJson.data);
+            LOCpS.innerHTML = `${Math.round(resJson.LOCpS * 100) / 100} LOC/S`;
             for (const item_id in resJson.data.items) {
                 let item_quantity_element = document.querySelector(
                     `#${item_id} .itemQuantity`
