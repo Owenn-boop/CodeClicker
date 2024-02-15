@@ -23,9 +23,9 @@ const itemPrices = {
 };
 
 const itemProductionRates = {
-    item_1: 0.1, // code monkey
-    item_2: 1, // hobby programmer
-    item_3: 5, // student programmer
+    item_1: 0.05, // code monkey
+    item_2: 0.4, // hobby programmer
+    item_3: 2.0, // student programmer
 };
 
 const client = new MongoClient(uri);
