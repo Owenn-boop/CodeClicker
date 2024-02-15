@@ -1,7 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
 import LocBalance from "./LocBalance.js";
+import { useState, useEffect } from "react";
 
 function LoginComponent({ show }) {
+    //const [loggedIn, setLoggedIn] = useState(false);
+
     return (
         <Container>
             <Row>
@@ -26,6 +29,23 @@ function LoginComponent({ show }) {
     );
 }
 
+export async function updateTick() {
+    try {
+        let username = document.querySelector("#username").value;
+        if (username == "") {
+            return;
+        }
+        let response = await fetch(
+            `http://localhost:3001/api/v1/updateTick?id=${username}`
+        );
+        if (response.ok) {
+            updateUserInfo();
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 export async function updateUserInfo() {
     try {
         let username = document.querySelector("#username").value;
@@ -38,7 +58,7 @@ export async function updateUserInfo() {
         );
         if (response.ok) {
             let resJson = await response.json();
-            loc_balance.innerHTML = resJson.data.loc;
+            loc_balance.innerHTML = Math.round(resJson.data.loc * 10) / 10;
             console.log(resJson.data);
             for (const item_id in resJson.data.items) {
                 let item_quantity_element = document.querySelector(
@@ -46,9 +66,11 @@ export async function updateUserInfo() {
                 );
                 item_quantity_element.textContent = resJson.data.items[item_id];
             }
+            //setLoggedIn(true);
         }
     } catch (err) {
         console.log(err);
+        //setLoggedIn(false);
     }
 }
 

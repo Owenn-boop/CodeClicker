@@ -18,7 +18,7 @@ export async function codeButtonClick(user) {
             }
             console.log(resJson);
             let loc_balance = document.querySelector("#loc_balance");
-            loc_balance.innerHTML = resJson.balance;
+            loc_balance.innerHTML = Math.round(resJson.balance * 10) / 10;
         }
     } catch (err) {
         console.log(err);

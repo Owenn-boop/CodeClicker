@@ -10,10 +10,22 @@ if (uri == undefined) {
     process.exit();
 }
 
+const itemNames = {
+    item_1: 0, // code monkey
+    item_2: 0, // hobby programmer
+    item_3: 0, // student programmer
+};
+
 const itemPrices = {
     item_1: 10, // code monkey
     item_2: 50, // hobby programmer
     item_3: 200, // student programmer
+};
+
+const itemProductionRates = {
+    item_1: 0.1, // code monkey
+    item_2: 1, // hobby programmer
+    item_3: 5, // student programmer
 };
 
 const client = new MongoClient(uri);
@@ -46,14 +58,28 @@ function getIncrementAmt(username) {
     return 1;
 }
 
+async function getTickIncrementAmount(collection, username) {
+    let search = await collection.findOne({ username: username });
+    let sum = 0;
+    if (search === null) {
+        internal(res);
+    }
+    for (const item in search.items) {
+        if (search.items[item] > 0) {
+            sum += itemProductionRates[item] * search.items[item];
+        }
+    }
+    return sum;
+}
+
 async function createDatabaseAccount(collection, username) {
     const userData = {
         username: username,
-        loc: 0,
-        items: {},
+        loc: 0.0,
+        items: itemNames,
     };
     await collection.insertOne(userData);
-    search = await collection.findOne({ username: username });
+    let search = await collection.findOne({ username: username });
     if (search === null) {
         internal(res);
     }
@@ -154,6 +180,46 @@ async function run() {
             }
         } catch (err) {
             internal(res);
+            console.log(err);
+        }
+    });
+
+    app.get("/api/v1/updateTick", async (req, res) => {
+        try {
+            let id = req.query.id;
+            if (id === undefined) {
+                badRequest(res, "Parameter missing 'id'");
+                return;
+            }
+
+            let search = await collection.findOne({ username: id });
+            let incrementAmt = await getTickIncrementAmount(collection, id);
+
+            if (search === null) {
+                badRequest(res, "Account does not exist.");
+                return;
+            } else {
+                await collection.findOneAndUpdate(
+                    { username: id },
+                    {
+                        $inc: {
+                            loc: incrementAmt,
+                        },
+                    }
+                );
+                console.log(
+                    `Increased ${id}'s balance by ${incrementAmt} to ${
+                        incrementAmt + search.loc
+                    }`
+                );
+                res.json({
+                    message: "Success",
+                });
+                return;
+            }
+        } catch (err) {
+            internal(res);
+            console.log(err);
         }
     });
 
