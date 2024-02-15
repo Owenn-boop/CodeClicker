@@ -13,7 +13,7 @@ if (uri == undefined) {
 const itemPrices = {
     item_1: 10, // code monkey
     item_2: 50, // hobby programmer
-    item_3: 100, // student programmer
+    item_3: 200, // student programmer
 };
 
 const client = new MongoClient(uri);
