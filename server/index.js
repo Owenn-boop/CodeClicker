@@ -14,18 +14,36 @@ const itemNames = {
     item_1: 0, // code monkey
     item_2: 0, // hobby programmer
     item_3: 0, // student programmer
+    item_4: 0, // blinky
+    item_5: 0, // fox
+    item_6: 0, // dae
+    item_7: 0, // conjuro
+    item_8: 0, // apache
+    item_9: 0, // cyber
 };
 
 const itemPrices = {
     item_1: 10, // code monkey
     item_2: 50, // hobby programmer
     item_3: 200, // student programmer
+    item_4: 150, // blinky
+    item_5: 200, // fox
+    item_6: 300, // dae
+    item_7: 450, // conjuro
+    item_8: 600, // apache
+    item_9: 1000, // cyber
 };
 
 const itemProductionRates = {
     item_1: 0.05, // code monkey
     item_2: 0.4, // hobby programmer
     item_3: 2.0, // student programmer
+    item_4: 3.0, // blinky
+    item_5: 4.0, // fox
+    item_6: 5.0, // dae
+    item_7: 6.0, // conjuro
+    item_8: 7.0, // apache
+    item_9: 7.5, // cyber
 };
 
 const client = new MongoClient(uri);

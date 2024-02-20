@@ -23,6 +23,12 @@ function Store(){
             <Row><StoreItem item={'monkey'}/></Row>
             <Row><StoreItem item={'hobby_programmer'}/></Row>
             <Row><StoreItem item={'student'}/></Row>
+            <Row><StoreItem item={'blinky'}/></Row>
+            <Row><StoreItem item={'fox'}/></Row>
+            <Row><StoreItem item={'dae'}/></Row>
+            <Row><StoreItem item={'conjuro'}/></Row>
+            <Row><StoreItem item={'apache'}/></Row>
+            <Row><StoreItem item={'cyber'}/></Row>
             
         </Container>
     );
