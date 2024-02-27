@@ -9,7 +9,18 @@ TechWise Cohort 2 Project 2
 ### Frontend:
 * `npm install`
 * `npm start`
+  
+  *The Frontend will be on port 3000 by default.*
 
 ### Backend:
-* Add `MONGO_URI` to .env in the ROOT directory.
+* `npm install`
+* Add `MONGO_URI` to `.env` in the ROOT directory.
 * `npm run back`
+  
+  *The Backend will be on port 3001 by default.*
+
+## Tech Stack:
+* React
+* React Bootstrap
+* NodeJS
+* MongoDB
