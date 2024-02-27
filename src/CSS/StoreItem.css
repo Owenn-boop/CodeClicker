@@ -1,5 +1,9 @@
-.StoreCol{
-    background-color: rgb(0, 128, 255);
+.StoreCol {
+    background-color: #061c07;
+}
+
+#StoreItemContainer {
+    height: 90%;
 }
 
 .Store-Item {

@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../CSS/StoreItem.css";
 import Image from "react-bootstrap/Image";
-import { getName, getId, getItemPrice } from "../StoreItemLookup.js";
+import { getName, getId, getItemPrice } from "../Javascript/StoreItemLookup.js";
 import { storeItemClick } from "../Javascript/storeItemHelper.js";
 
 function StoreItem({ item }) {
