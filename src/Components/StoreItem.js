@@ -6,7 +6,7 @@ import Image from "react-bootstrap/Image";
 import { getName, getId, getItemPrice } from "../Javascript/StoreItemLookup.js";
 import { storeItemClick } from "../Javascript/storeItemHelper.js";
 
-function StoreItem({ item }) {
+function StoreItem({ item, props }) {
     let item_image = require(`../Assets/${item}.png`);
     let item_name = getName(item);
     let item_id = getId(item);
@@ -18,7 +18,14 @@ function StoreItem({ item }) {
             variant="secondary"
             id={"item_" + item_id}
             data={"item_" + item_id}
-            onClick={() => storeItemClick("item_" + item_id)}
+            onClick={() =>
+                storeItemClick(
+                    "item_" + item_id,
+                    props.setCurrentLOC,
+                    props.setLoggedIn,
+                    props.setUserName
+                )
+            }
         >
             <Row>
                 <Col sm={2}>

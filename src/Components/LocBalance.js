@@ -1,9 +1,7 @@
 import { Overlay } from "react-bootstrap";
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 
-
-
-function LocBalance() {
+function LocBalance({ currentLOC }) {
     const target = useRef(null);
     /*const useEffect(() => {
         document.querySelector('#loc_balance').innerHTML = balance;
@@ -11,7 +9,9 @@ function LocBalance() {
 
     return (
         <>
-            <h2 id="loc_balance" ref={target} >Not logged in!</h2>
+            <h2 id="loc_balance" ref={target}>
+                {currentLOC != -1 ? currentLOC : "Not logged in!"}
+            </h2>
             {/*
             <Overlay target={target.current} show={show} placement="bottom">
                 {({
@@ -39,6 +39,6 @@ function LocBalance() {
             </Overlay>
                     */}
         </>
-    )
+    );
 }
 export default LocBalance;

@@ -1,6 +1,11 @@
 import { updateUserInfo } from "../Components/LoginComponent";
 
-export async function storeItemClick(item) {
+export async function storeItemClick(
+    item,
+    setCurrentLOC,
+    setLoggedIn,
+    setUserName
+) {
     let user = document.getElementById("username").value;
     console.log(item, user);
     try {
@@ -9,7 +14,11 @@ export async function storeItemClick(item) {
         );
         console.log(response);
         if (response.ok) {
-            updateUserInfo();
+            updateUserInfo(
+                this.setCurrentLOC,
+                this.setLoggedIn,
+                this.setUserName
+            );
         }
     } catch (err) {
         console.log(err);
