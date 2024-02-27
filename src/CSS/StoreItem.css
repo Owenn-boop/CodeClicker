@@ -1,5 +1,9 @@
-.StoreCol{
-    background-color:#061c07;
+.StoreCol {
+    background-color: #061c07;
+}
+
+#StoreItemContainer {
+    height: 90%;
 }
 
 .Store-Item {
