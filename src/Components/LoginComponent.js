@@ -2,15 +2,18 @@ import { Container, Row, Col } from "react-bootstrap";
 import LocBalance from "./LocBalance.js";
 import { useState, useEffect } from "react";
 
-function LoginComponent({ show }) {
-    //const [loggedIn, setLoggedIn] = useState(false);
-
+function LoginComponent({
+    currentLOC,
+    setCurrentLOC,
+    setLoggedIn,
+    setUserName,
+}) {
     return (
         <Container>
             <Row>
                 <Col>
                     <h3>LOC: </h3>
-                    <LocBalance />
+                    <LocBalance currentLOC={currentLOC} />
                     <div id="LOCpS"></div>
                 </Col>
             </Row>
@@ -23,16 +26,30 @@ function LoginComponent({ show }) {
                         type="text"
                     ></input>
                     <br />
-                    <button onClick={updateUserInfo}>Sign in</button>
+                    <button
+                        onClick={() =>
+                            updateUserInfo(
+                                setCurrentLOC,
+                                setLoggedIn,
+                                setUserName
+                            )
+                        }
+                    >
+                        Sign in
+                    </button>
                 </Col>
             </Row>
         </Container>
     );
 }
 
-export async function updateTick() {
+export async function updateTick(
+    setCurrentLOC,
+    setLoggedIn,
+    setUserName,
+    username
+) {
     try {
-        let username = document.querySelector("#username").value;
         if (username == "") {
             return;
         }
@@ -40,27 +57,28 @@ export async function updateTick() {
             `http://localhost:3001/api/v1/updateTick?id=${username}`
         );
         if (response.ok) {
-            updateUserInfo();
+            updateUserInfo(setCurrentLOC, setLoggedIn, setUserName);
         }
     } catch (err) {
         console.log(err);
     }
 }
 
-export async function updateUserInfo() {
+export async function updateUserInfo(setCurrentLOC, setLoggedIn, setUserName) {
     try {
         let username = document.querySelector("#username").value;
         if (username == "") {
+            setUserName("");
+            setLoggedIn(false);
             return;
         }
-        let loc_balance = document.querySelector("#loc_balance");
         let LOCpS = document.querySelector("#LOCpS");
         let response = await fetch(
             `http://localhost:3001/api/v1/getAccount?id=${username}`
         );
         if (response.ok) {
             let resJson = await response.json();
-            loc_balance.innerHTML = Math.round(resJson.data.loc * 10) / 10;
+            setCurrentLOC(Math.round(resJson.data.loc * 10) / 10);
             LOCpS.innerHTML = `${Math.round(resJson.LOCpS * 100) / 100} LOC/S`;
             for (const item_id in resJson.data.items) {
                 let item_quantity_element = document.querySelector(
@@ -68,11 +86,12 @@ export async function updateUserInfo() {
                 );
                 item_quantity_element.textContent = resJson.data.items[item_id];
             }
-            //setLoggedIn(true);
+            setLoggedIn(true);
+            setUserName(username);
         }
     } catch (err) {
         console.log(err);
-        //setLoggedIn(false);
+        setLoggedIn(false);
     }
 }
 

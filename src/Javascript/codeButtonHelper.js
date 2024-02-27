@@ -1,7 +1,7 @@
 import LocBalance from "../Components/LocBalance";
 import App from "../App";
 
-export async function codeButtonClick(user) {
+export async function codeButtonClick(user, setCurrentLOC) {
     console.log(`${user} clicked the button!`);
     if (user.length < 3) {
         alert("Username is too short/you are not logged in!");
@@ -17,8 +17,7 @@ export async function codeButtonClick(user) {
                 alert("Account has been created!");
             }
             console.log(resJson);
-            let loc_balance = document.querySelector("#loc_balance");
-            loc_balance.innerHTML = Math.round(resJson.balance * 10) / 10;
+            setCurrentLOC(Math.round(resJson.balance * 10) / 10);
         }
     } catch (err) {
         console.log(err);

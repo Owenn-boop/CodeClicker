@@ -4,7 +4,7 @@ import StoreItem from "./StoreItem";
 import StoreUpgrades from "./StoreUpgrades";
 import { Col } from "react-bootstrap/esm";
 
-function Store() {
+function Store(props) {
     return (
         <>
             <Row>
@@ -25,31 +25,31 @@ function Store() {
 
                 {/*<Row><p className= 'border-bottom'>Tools</p></Row>*/}
                 <Row>
-                    <StoreItem item={"monkey"} />
+                    <StoreItem item={"monkey"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"hobby_programmer"} />
+                    <StoreItem item={"hobby_programmer"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"student"} />
+                    <StoreItem item={"student"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"blinky"} />
+                    <StoreItem item={"blinky"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"fox"} />
+                    <StoreItem item={"fox"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"dae"} />
+                    <StoreItem item={"dae"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"conjuro"} />
+                    <StoreItem item={"conjuro"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"apache"} />
+                    <StoreItem item={"apache"} props={props} />
                 </Row>
                 <Row>
-                    <StoreItem item={"cyber"} />
+                    <StoreItem item={"cyber"} props={props} />
                 </Row>
             </Container>
         </>

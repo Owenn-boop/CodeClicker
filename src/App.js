@@ -7,17 +7,36 @@ import Store from "./Components/Store";
 import "./CSS/StoreItem.css";
 import CodeButton from "./Components/CodeButton";
 import LoginComponent from "./Components/LoginComponent";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { updateTick } from "./Components/LoginComponent";
 
 function App() {
+    const [currentLOC, setCurrentLOC] = useState(-1);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [username, setUserName] = useState("");
+    const userRef = useRef(username);
+    const loggedInRef = useRef(loggedIn == true);
+
     useEffect(() => {
         const intervalId = setInterval(() => {
-            updateTick();
-            console.log("A tick has passed.");
+            if (loggedInRef.current) {
+                updateTick(
+                    setCurrentLOC,
+                    setLoggedIn,
+                    setUserName,
+                    userRef.current
+                );
+            }
+            console.log("A tick has passed." + userRef.current);
         }, 1000);
         return () => clearInterval(intervalId);
     }, []);
+
+    // for use in above use effect
+    useEffect(() => {
+        loggedInRef.current = loggedIn;
+        userRef.current = username;
+    }, [username, loggedIn]);
     return (
         <div className="App">
             <header className="App-header">
@@ -28,15 +47,22 @@ function App() {
                 <Row>
                     <Col className="d-flex" id="LoginColumn">
                         {/* Content for the first column */}
-                        <LoginComponent />
+                        <LoginComponent
+                            currentLOC={currentLOC}
+                            setCurrentLOC={setCurrentLOC}
+                            setLoggedIn={setLoggedIn}
+                            setUserName={setUserName}
+                        />
                     </Col>
                     <Col className="CodeButtonCol d-flex align-items-center justify-content-center">
                         {/* Content for the second column */}
-                        <CodeButton />
+                        <CodeButton setCurrentLOC={setCurrentLOC} />
                     </Col>
                     <Col className="StoreCol">
                         {/* Content for the third column */}
-                        <Store />
+                        <Store
+                            props={(setCurrentLOC, setLoggedIn, setUserName)}
+                        />
                     </Col>
                 </Row>
             </Container>
