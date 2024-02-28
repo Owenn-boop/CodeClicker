@@ -131,6 +131,14 @@ export async function userLogout(setCurrentLOC, setLoggedIn, setUserName) {
     setLoggedIn(false);
     setUserName("");
     setCurrentLOC(-1);
+
+    // resetting all item quantities
+    for (const item_number in [...Array(9).keys()]) {
+        let item_quantity_element = document.querySelector(
+            `#${"item_" + (parseInt(item_number) + 1)} .itemQuantity`
+        );
+        item_quantity_element.textContent = "0";
+    }
 }
 
 export async function updateUserInfo(
