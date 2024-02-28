@@ -42,6 +42,7 @@ function App() {
             setUserName("");
         }
     }, [username, loggedIn]);
+
     return (
         <div className="App">
             <header className="App-header">
@@ -72,12 +73,10 @@ function App() {
                     <Col className="StoreCol">
                         {/* Content for the third column */}
                         <Store
-                            props={
-                                (setCurrentLOC,
-                                setLoggedIn,
-                                setUserName,
-                                setCurrentLOCpS)
-                            }
+                            setCurrentLOC={setCurrentLOC}
+                            setLoggedIn={setLoggedIn}
+                            setUserName={setUserName}
+                            setCurrentLOCpS={setCurrentLOCpS}
                             username={username}
                         />
                     </Col>

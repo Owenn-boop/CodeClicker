@@ -1,10 +1,17 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import StoreItem from "./StoreItem";
+import { getItemNames } from "../Javascript/StoreItemLookup";
 import StoreUpgrades from "./StoreUpgrades";
 import { Col } from "react-bootstrap/esm";
 
-function Store(props, username) {
+function Store({
+    setCurrentLOC,
+    setLoggedIn,
+    setUserName,
+    setCurrentLOCpS,
+    username,
+}) {
     return (
         <>
             <Row>
@@ -24,61 +31,20 @@ function Store(props, username) {
             */}
 
                 {/*<Row><p className= 'border-bottom'>Tools</p></Row>*/}
-                <Row>
-                    <StoreItem
-                        item={"monkey"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
-                <Row>
-                    <StoreItem
-                        item={"hobby_programmer"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
-                <Row>
-                    <StoreItem
-                        item={"student"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
-                <Row>
-                    <StoreItem
-                        item={"blinky"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
-                <Row>
-                    <StoreItem item={"fox"} props={props} username={username} />
-                </Row>
-                <Row>
-                    <StoreItem item={"dae"} props={props} username={username} />
-                </Row>
-                <Row>
-                    <StoreItem
-                        item={"conjuro"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
-                <Row>
-                    <StoreItem
-                        item={"apache"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
-                <Row>
-                    <StoreItem
-                        item={"cyber"}
-                        props={props}
-                        username={username}
-                    />
-                </Row>
+                {getItemNames().map((name) => {
+                    return (
+                        <Row key={`${name}`}>
+                            <StoreItem
+                                item={`${name}`}
+                                setCurrentLOC={setCurrentLOC}
+                                setLoggedIn={setLoggedIn}
+                                setUserName={setUserName}
+                                setCurrentLOCpS={setCurrentLOCpS}
+                                username={username}
+                            />
+                        </Row>
+                    );
+                })}
             </Container>
         </>
     );

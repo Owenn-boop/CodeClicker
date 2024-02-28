@@ -6,12 +6,18 @@ import Image from "react-bootstrap/Image";
 import { getName, getId, getItemPrice } from "../Javascript/StoreItemLookup.js";
 import { storeItemClick } from "../Javascript/storeItemHelper.js";
 
-function StoreItem({ item, props }) {
+function StoreItem({
+    item,
+    setCurrentLOC,
+    setLoggedIn,
+    setUserName,
+    setCurrentLOCpS,
+    username,
+}) {
     let item_image = require(`../Assets/${item}.png`);
     let item_name = getName(item);
     let item_id = getId(item);
     let item_price = getItemPrice(item);
-
     return (
         <Button
             className="Store-Item"
@@ -21,10 +27,11 @@ function StoreItem({ item, props }) {
             onClick={() =>
                 storeItemClick(
                     "item_" + item_id,
-                    props.setCurrentLOC,
-                    props.setLoggedIn,
-                    props.setUserName,
-                    props.username
+                    setCurrentLOC,
+                    setLoggedIn,
+                    setUserName,
+                    setCurrentLOCpS,
+                    username
                 )
             }
         >

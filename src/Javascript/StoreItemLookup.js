@@ -34,6 +34,10 @@ let item_prices = {
     cyber: 25000,
 };
 
+export function getItemNames() {
+    return Object.keys(item_texts);
+}
+
 export function getName(item_name) {
     return item_texts[item_name];
 }

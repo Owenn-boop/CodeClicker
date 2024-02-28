@@ -5,6 +5,7 @@ export async function storeItemClick(
     setCurrentLOC,
     setLoggedIn,
     setUserName,
+    setCurrentLOCpS,
     username
 ) {
     console.log(item, username);
@@ -15,10 +16,10 @@ export async function storeItemClick(
         console.log(response);
         if (response.ok) {
             updateUserInfo(
-                this.setCurrentLOC,
-                this.setLoggedIn,
-                this.setUserName,
-                this.setCurrentLOCpS
+                username,
+                setCurrentLOC,
+                setLoggedIn,
+                setCurrentLOCpS
             );
         }
     } catch (err) {
