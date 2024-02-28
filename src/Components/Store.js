@@ -4,7 +4,7 @@ import StoreItem from "./StoreItem";
 import StoreUpgrades from "./StoreUpgrades";
 import { Col } from "react-bootstrap/esm";
 
-function Store(props) {
+function Store(props, username) {
     return (
         <>
             <Row>
@@ -25,31 +25,59 @@ function Store(props) {
 
                 {/*<Row><p className= 'border-bottom'>Tools</p></Row>*/}
                 <Row>
-                    <StoreItem item={"monkey"} props={props} />
+                    <StoreItem
+                        item={"monkey"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
                 <Row>
-                    <StoreItem item={"hobby_programmer"} props={props} />
+                    <StoreItem
+                        item={"hobby_programmer"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
                 <Row>
-                    <StoreItem item={"student"} props={props} />
+                    <StoreItem
+                        item={"student"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
                 <Row>
-                    <StoreItem item={"blinky"} props={props} />
+                    <StoreItem
+                        item={"blinky"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
                 <Row>
-                    <StoreItem item={"fox"} props={props} />
+                    <StoreItem item={"fox"} props={props} username={username} />
                 </Row>
                 <Row>
-                    <StoreItem item={"dae"} props={props} />
+                    <StoreItem item={"dae"} props={props} username={username} />
                 </Row>
                 <Row>
-                    <StoreItem item={"conjuro"} props={props} />
+                    <StoreItem
+                        item={"conjuro"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
                 <Row>
-                    <StoreItem item={"apache"} props={props} />
+                    <StoreItem
+                        item={"apache"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
                 <Row>
-                    <StoreItem item={"cyber"} props={props} />
+                    <StoreItem
+                        item={"cyber"}
+                        props={props}
+                        username={username}
+                    />
                 </Row>
             </Container>
         </>

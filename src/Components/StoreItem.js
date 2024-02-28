@@ -23,7 +23,8 @@ function StoreItem({ item, props }) {
                     "item_" + item_id,
                     props.setCurrentLOC,
                     props.setLoggedIn,
-                    props.setUserName
+                    props.setUserName,
+                    props.username
                 )
             }
         >
