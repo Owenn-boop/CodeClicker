@@ -39,6 +39,7 @@ function App() {
         userRef.current = username;
         if (!loggedIn) {
             setCurrentLOC(-1);
+            setCurrentLOCpS(-1);
             setUserName("");
         }
     }, [username, loggedIn, currentLOC, currentLOCpS]);
