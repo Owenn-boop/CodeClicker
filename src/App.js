@@ -41,7 +41,7 @@ function App() {
             setCurrentLOC(-1);
             setUserName("");
         }
-    }, [username, loggedIn]);
+    }, [username, loggedIn, currentLOC, currentLOCpS]);
 
     return (
         <div className="App">
