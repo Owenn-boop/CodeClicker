@@ -148,7 +148,6 @@ export async function updateUserInfo(
     setCurrentLOCpS
 ) {
     try {
-        let LOCpS = document.querySelector("#LOCpS");
         let response = await fetch(
             `http://localhost:3001/api/v1/getAccount?id=${username}`
         );
