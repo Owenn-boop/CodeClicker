@@ -12,6 +12,7 @@ import { updateTick } from "./Components/LoginComponent";
 
 function App() {
     const [currentLOC, setCurrentLOC] = useState(-1);
+    const [currentLOCpS, setCurrentLOCpS] = useState(-1);
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUserName] = useState("");
     const userRef = useRef(username);
@@ -22,8 +23,8 @@ function App() {
             if (loggedInRef.current) {
                 updateTick(
                     setCurrentLOC,
+                    setCurrentLOCpS,
                     setLoggedIn,
-                    setUserName,
                     userRef.current
                 );
             }
@@ -36,6 +37,10 @@ function App() {
     useEffect(() => {
         loggedInRef.current = loggedIn;
         userRef.current = username;
+        if (!loggedIn) {
+            setCurrentLOC(-1);
+            setUserName("");
+        }
     }, [username, loggedIn]);
     return (
         <div className="App">
@@ -49,19 +54,31 @@ function App() {
                         {/* Content for the first column */}
                         <LoginComponent
                             currentLOC={currentLOC}
+                            currentLOCpS={currentLOCpS}
                             setCurrentLOC={setCurrentLOC}
+                            setCurrentLOCpS={setCurrentLOCpS}
                             setLoggedIn={setLoggedIn}
                             setUserName={setUserName}
+                            loggedIn={loggedIn}
                         />
                     </Col>
                     <Col className="CodeButtonCol d-flex align-items-center justify-content-center">
                         {/* Content for the second column */}
-                        <CodeButton setCurrentLOC={setCurrentLOC} />
+                        <CodeButton
+                            setCurrentLOC={setCurrentLOC}
+                            username={username}
+                        />
                     </Col>
                     <Col className="StoreCol">
                         {/* Content for the third column */}
                         <Store
-                            props={(setCurrentLOC, setLoggedIn, setUserName)}
+                            props={
+                                (setCurrentLOC,
+                                setLoggedIn,
+                                setUserName,
+                                setCurrentLOCpS)
+                            }
+                            username={username}
                         />
                     </Col>
                 </Row>

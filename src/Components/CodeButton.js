@@ -2,17 +2,12 @@ import Button from "react-bootstrap/Button";
 import "../CSS/CodeButton.css";
 import { codeButtonClick } from "../Javascript/codeButtonHelper";
 
-function CodeButton({ setCurrentLOC }) {
+function CodeButton({ setCurrentLOC, username }) {
     return (
         <div className="align-self-center">
             <Button
                 className="code-button"
-                onClick={() =>
-                    codeButtonClick(
-                        document.querySelector("#username").value,
-                        setCurrentLOC
-                    )
-                }
+                onClick={() => codeButtonClick(username, setCurrentLOC)}
             >
                 CodeButton
             </Button>
